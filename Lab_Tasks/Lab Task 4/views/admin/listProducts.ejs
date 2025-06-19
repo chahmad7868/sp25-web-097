@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+
+<h1>Product List</h1>
+<a href="/admin/products/add" class="button-link">Add New Product</a>
+
+<% products.forEach(p => { %>
+  <div class="order-card">
+    <h3><%= p.title %></h3>
+    <p><strong>Price:</strong> $<%= p.price %></p>
+    <p><%= p.description %></p>
+    <img src="<%= p.imageUrl %>" style="max-width:100px;">
+    <div>
+      <a href="/admin/products/edit/<%= p._id %>" class="button-link">Edit</a>
+      <form action="/admin/products/delete/<%= p._id %>" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+<% }) %>
+
+<%- include('../partials/footer') %>

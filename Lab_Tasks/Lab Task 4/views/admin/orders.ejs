@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<h2>Orders List</h2>
+<% orders.forEach(o => { %>
+    <div>
+      <h3>Order by: <%= o.customerName %></h3>
+      <p>Total: $<%= o.total %></p>
+      <p>Status: <%= o.status %></p>
+      <form method="POST" action="/admin/orders/status/<%= o._id %>">
+        <select name="status">
+          <option value="Pending">Pending</option>
+          <option value="Completed">Completed</option>
+        </select>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  <% }) %>
+
+  <%- include('../partials/footer') %>
